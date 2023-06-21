@@ -36,12 +36,11 @@ http.createServer(async (req, res) => {
   if (req.method === 'POST' && req.url === '/') {
     const data = await resolvePost(req);
     const projectDir = path.resolve(__dirname, `./${data.repository.name}`)
+    console.log(projectDir)
     deleteFolderRecursive(projectDir)
 
     // 拉取仓库最新代码
-    execSync(`git clone https://github.com/yeyan1996/${data.repository.name}.git ${projectDir}`, {
-      stdio: 'inherit',
-    })
+    execSync(`git clone https://github.com/z1948296027/${data.repository.name}.git`)
 
     // 复制 Dockerfile 到项目目录
     fs.copyFileSync(path.resolve(__dirname, `./Dockerfile`), path.resolve(projectDir, './Dockerfile'))
