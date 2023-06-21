@@ -3,6 +3,7 @@ const { execSync } = require("child_process")
 const fs = require("fs")
 const path = require("path")
 
+
 // 递归删除目录
 function deleteFolderRecursive(path) {
   if (fs.existsSync(path)) {
